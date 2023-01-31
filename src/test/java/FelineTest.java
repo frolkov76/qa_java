@@ -42,7 +42,7 @@ public class FelineTest {
         Feline feline = new Feline();
         int expectedKittens = 1;
         int actualKittens = feline.getKittens();
-        Assert.assertEquals("Некорректный ввоод колличесва котят", expectedKittens, actualKittens);
+        Assert.assertEquals("Некорректный ввод количества котят", expectedKittens, actualKittens);
     }
 
 }

@@ -32,7 +32,7 @@ public class LionTest {
         return new Object[][]{
                 {"Самец", true, 1},
                 {"Самка", false, 1},
-                {"Червяк", true, 0},
+                {"Оно", true, 0},
         };
     }
 
