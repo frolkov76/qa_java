@@ -12,7 +12,7 @@ import java.util.List;
 public class CatTest {
 
     @Mock
-    Feline feline;
+     Feline feline;
 
     @Test
     public void getSoundTest () {
@@ -22,10 +22,12 @@ public class CatTest {
         Assert.assertEquals("Некорректный ввод звука", expectedSound, actualSound);
     }
 
+
     @Test
     public void getFoodTestCat () throws Exception {
         Cat cat = new Cat(feline);
-        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), cat.getFood());
+        List<String> expected = List.of("Животные", "Птицы", "Рыба");
+        Mockito.when(feline.eatMeat()).thenReturn(expected);
+        Assert.assertEquals(expected, cat.getFood());
     }
 }

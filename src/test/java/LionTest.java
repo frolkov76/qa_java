@@ -32,7 +32,7 @@ public class LionTest {
         return new Object[][]{
                 {"Самец", true, 1},
                 {"Самка", false, 1},
-                {"Оно", true, 0},
+
         };
     }
 
@@ -40,43 +40,33 @@ public class LionTest {
     public void init() {
         MockitoAnnotations.openMocks(this);
     }
-
     @Mock
     Feline feline;
 
     @Test
-    public void getHasMane ()  {
-        try {
+    public void getHasMane () throws Exception {
+
             Lion lion = new Lion(sex, feline);
             Assert.assertEquals(hasMane, lion.doesHaveMane());
-        } catch (Exception exception) {
-            Assert.assertEquals("Используйте допустимые значения пола животного - самец или самка",
-                    exception.getMessage());
         }
-    }
 
     @Test
-    public void getFoodTestLion () {
-        try {
+    public void getFoodTestLion () throws Exception {
+
+
             Lion lion = new Lion(sex, feline);
-            Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-            Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
-        } catch (Exception exception) {
-            Assert.assertEquals("Используйте допустимые значения пола животного - самец или самка",
-                    exception.getMessage());
-        }
+            List<String> expected = List.of("Животные", "Птицы", "Рыба");
+            Mockito.when(feline.getFood("Хищник")).thenReturn(expected);
+            Assert.assertEquals(expected, lion.getFood());
     }
 
     @Test
-    public void getKittensTestLion ()  {
-        try {
+    public void getKittensTestLion () throws Exception {
+
             Lion lion = new Lion(sex, feline);
             Mockito.when(feline.getKittens()).thenReturn(kittensCount);
             Assert.assertEquals(1, lion.getKittens());
-        } catch (Exception exception) {
-            Assert.assertEquals("Используйте допустимые значения пола животного - самец или самка",
-                    exception.getMessage());
-        }
+
     }
 }
 

@@ -14,19 +14,15 @@ public class FelineTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Mock
-    Animal animal;
 
     @Test
-    public void getEatTestFeline() {
-        try {
-            Feline feline = new Feline();
-            Mockito.when(animal.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-            Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), feline.eatMeat());
-        } catch (Exception exception) {
-            Assert.assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник",
-                    exception.getMessage());
-        }
+    public void getEatTestFeline() throws Exception {
+
+        Feline feline = new Feline();
+        List <String> expectedFoodKind = List.of("Животные", "Птицы", "Рыба");
+        List<String> actualFoodKind = feline.eatMeat();
+        Assert.assertEquals( expectedFoodKind,actualFoodKind);
+
     }
 
     @Test
